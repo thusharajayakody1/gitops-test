@@ -15,7 +15,7 @@ spec:
       repoURL: https://github.com/PascalVA/gitops-test.git
       revision: main
       directories:
-      - path: "applications/"
+      - path: "applications/*"
   template:
     metadata:
       name: 'app-{{.path.basename}}'
