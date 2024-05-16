@@ -33,7 +33,7 @@ spec:
         path: 'applications/{{.path.basename}}'
       destination:
         name: in-cluster
-        namespace: applications
+        namespace: argocd
       syncPolicy:
         automated:
           prune: true

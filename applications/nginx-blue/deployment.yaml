@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: nginx-blue
+  namespace: applications
   name: nginx-blue
 spec:
   replicas: 1
