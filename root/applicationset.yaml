@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       name: 'app-{{.path.basename}}'
-      namespace: argocd
+      namespace: applications
       # finalizers:
       # - resources-finalizer.argocd.argoproj.io
       labels:
