@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-red
+  namespace: applications
+  name: nginx-red
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-red
+  template:
+    metadata:
+      labels:
+        app: nginx-red
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx

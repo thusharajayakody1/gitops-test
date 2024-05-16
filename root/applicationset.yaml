@@ -16,6 +16,8 @@ spec:
       revision: main
       directories:
       - path: "applications/*"
+      - path: "applications/nginx-grey"
+        exclude: true
   template:
     metadata:
       name: 'app-{{.path.basename}}'
