@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: nginx-blue
+  annotations:
+    argocd.argoproj.io/sync-options: Delete=false
   namespace: applications
   name: nginx-blue
 spec:
