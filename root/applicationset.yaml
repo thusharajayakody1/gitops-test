@@ -18,6 +18,8 @@ spec:
       - path: "applications/*"
       - path: "applications/nginx-grey"
         exclude: true
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: 'app-{{.path.basename}}'
