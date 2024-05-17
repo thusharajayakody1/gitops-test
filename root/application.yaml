@@ -17,7 +17,7 @@ spec:
   project: applications
   source:
     path: applications/nginx-grey
-    repoURL: https://github.com/PascalVA/gitops-test.git
+    repoURL: https://github.com:thusharajayakody1/gitops-test.git
     targetRevision: main
   syncPolicy:
     automated:
