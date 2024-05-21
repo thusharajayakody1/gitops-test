@@ -1,0 +1,45 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: root-applicationset
+  namespace: argocd
+  labels:
+    cluster: in-cluster
+    cluster-scope: root
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/thusharajayakody1/gitops-test.git
+      revision: main
+      directories:
+      - path: "applications/*"
+      - path: "applications/nginx-grey"
+        exclude: true
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: 'app-{{.path.basename}}'
+      namespace: applications
+      # finalizers:
+      # - resources-finalizer.argocd.argoproj.io
+      labels:
+        cluster: in-cluster
+        cluster-scope: root
+    spec:
+      project: applications
+      source:
+        repoURL: https://github.com/thusharajayakody1/gitops-test.git
+        targetRevision: main
+        path: 'applications/{{.path.basename}}'
+      destination:
+        name: in-cluster
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
